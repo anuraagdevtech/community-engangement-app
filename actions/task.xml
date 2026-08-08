@@ -1,0 +1,51 @@
+<system_role>
+You are an expert Startup Founder, Product Architect, and Mobile App Developer specializing in hyperlocal community networks, micro-marketplaces, and social platform design.
+</system_role>
+
+<context>
+I am building a next-generation "Hyperlocal Socializing & Community Networking Platform." The app connects residents living within a tight geographical radius (500 meters to 5 kilometers) for seamless social interactions, local service discovery, interest-based groups, and community utility.
+
+### Key Capabilities & Use Cases
+- Local Service Discovery: Plumbers, electricians, doctors, schools, colleges, government services, temple services.
+- Social & Recreation: Sports/gaming meetups, fitness clubs, foodies, local touring, local events, interest groups.
+- Peer-to-Peer Marketplace: Buying/selling used items, flatmate hunting, local recommendations.
+- Community Communication: Geo-verified neighborhood feed, pincode-based chat channels, RWA/society announcements.
+
+### Business & Monetization Strategy
+1. Hyper-Targeted Local Ads: Self-serve dashboard for local shops, clinics, and businesses to run micro-targeted ads within specific pincodes.
+2. Service Commissions: Take a 5%–15% fee on lead generation and in-app bookings for home services, coaches, tutors, and local event tickets.
+3. Freemium Resident Upgrades: Premium listing boosts for rental properties, buy/sell items, and commercial group organizers.
+4. Institutional SaaS: Paid verified channels for schools, temples, RWAs, and local government bodies to post official announcements.
+</context>
+
+<task>
+Act as my Chief Product Officer (CPO). Help me draft a complete **Product Requirement Document (PRD)** and **System Architecture Plan** for this app. 
+
+Please break down your response into the following clear sections:
+
+1. **Executive Summary & Value Proposition**
+   - Define the primary "daily habit hook" that will make users open this app every single day (beating the competition from WhatsApp/MyGate).
+
+2. **Core Feature Breakdown & UX Modules**
+   - **Neighborhood Feed & Chat:** Geo-verification, pincode filters, privacy controls, and moderation rules.
+   - **Local Services Directory:** How users discover, review, and book plumbers, doctors, schools, and temple services.
+   - **Interest & Social Circles:** Matchmaking for sports, fitness, gaming, and local outings.
+   - **Micro-Marketplace:** Safe peer-to-peer buying/selling with localized escrow/payments.
+
+3. **Detailed Monetization Architecture**
+   - Provide a step-by-step roadmap on how to introduce and scale our 4 revenue streams (Ads, Commissions, Freemium Boosts, SaaS) from Launch to Scale.
+   - Explain how local business owners will set up and pay for hyper-targeted micro-ads in simple steps.
+
+4. **Technical Architecture & Data Model**
+   - Suggest a modern tech stack suitable for real-time chat, location tracking, and rapid scaling (e.g., Flutter/React Native, Node.js/Go, PostGIS, Firebase/WebSockets).
+   - Define the database schema / core entities required (Users, Geofences, Posts, Services, Bookings, Transactions).
+
+5. **Growth Hack & Launch Strategy**
+   - Outline a 90-day go-to-market (GTM) strategy for launching in a pilot neighborhood/pincode to achieve hyper-density and high engagement.
+</task>
+
+<formatting_instructions>
+- Use clear headings, structured tables, and bullet points for readability.
+- Be highly practical, actionable, and specific. Avoid generic boilerplate advice.
+- Address real-world challenges such as preventing user toxicity, address verification difficulties, and local merchant onboarding.
+</formatting_instructions>

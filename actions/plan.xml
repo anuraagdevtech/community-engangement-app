@@ -1,0 +1,102 @@
+<hyperlocal_app_strategy>
+  <overview>
+    <approach>Web-First Development moving to Cross-Platform Mobile Apps</approach>
+    <rationale>
+      Building a web application first allows rapid prototyping, easy user acquisition without app store friction, and testing core features and business logic before deploying native mobile apps.
+    </rationale>
+  </overview>
+
+  <tech_stack_and_architecture>
+    <backend_and_database>
+      <technology>Supabase (PostgreSQL + PostGIS)</technology>
+      <features>
+        <feature>PostGIS for high-performance geofencing (500m to 5km radius queries)</feature>
+        <feature>Built-in Authentication &amp; Row-Level Security (RLS)</feature>
+        <feature>Realtime WebSockets for local chat and feeds</feature>
+        <feature>Object Storage for user uploads and verification docs</feature>
+      </features>
+    </backend_and_database>
+
+    <web_framework>
+      <technology>Next.js (App Router) + Tailwind CSS + shadcn/ui</technology>
+      <features>
+        <feature>High SEO optimization for local service searches</feature>
+        <feature>Progressive Web App (PWA) readiness</feature>
+        <feature>Mobile-first responsive interface design</feature>
+      </features>
+    </web_framework>
+
+    <mobile_framework_phase_2>
+      <technology>React Native + Expo Router + NativeWind</technology>
+      <features>
+        <feature>Shared styling paradigms (Tailwind syntax)</feature>
+        <feature>Direct connection to existing Supabase backend</feature>
+        <feature>Single codebase for iOS and Android deployment via Expo EAS</feature>
+      </features>
+    </mobile_framework_phase_2>
+
+    <architecture_diagram>
+      <![CDATA[
+┌─────────────────────────────────────────────────────────┐
+│              BACKEND & DATABASE SERVICES                │
+│ (Supabase / Node.js + PostGIS / PostgreSQL DB + Auth)   │
+└────────────────────────────┬────────────────────────────┘
+                             │
+                             ▼
+               ┌───────────────────────────┐
+               │    SHARED API / LOGIC     │
+               │  (REST / GraphQL / tRPC)  │
+               └─────────────┬─────────────┘
+                             │
+        ┌────────────────────┴────────────────────┐
+        ▼                                         ▼
+┌──────────────┐                          ┌──────────────┐
+│  WEB (NOW)   │                          │ MOBILE (NEXT)│
+│ Next.js +    │                          │ React Native │
+│ Tailwind CSS │                          │  with Expo   │
+└──────────────┘                          └──────────────┘
+      ]]>
+    </architecture_diagram>
+  </tech_stack_and_architecture>
+
+  <roadmap>
+    <phase id="1" name="Web MVP Launch">
+      <step>Build responsive web app using Next.js, fully optimized for mobile viewports.</step>
+      <step>Set up PostgreSQL database with PostGIS extension for geolocation queries.</step>
+      <step>Implement core modules: Geo-located feed, local services directory, and post creation.</step>
+      <step>Launch in a pilot neighborhood to test engagement and gather feedback.</step>
+    </phase>
+
+    <phase id="2" name="PWA &amp; Mobile-First Enhancements">
+      <step>Configure PWA manifest allowing users to 'Add to Home Screen'.</step>
+      <step>Integrate Web Push Notifications and browser Geolocation API.</step>
+      <step>Optimize merchant dashboards for desktop and web access.</step>
+    </phase>
+
+    <phase id="3" name="Cross-Platform Native Apps">
+      <step>Scaffold an Expo React Native mobile project (or monorepo structure).</step>
+      <step>Hook mobile app directly into the active Supabase backend schema.</step>
+      <step>Implement native capabilities: APNs/FCM Push Notifications, native camera access, and background location.</step>
+      <step>Publish iOS to Apple App Store and Android to Google Play via Expo EAS.</step>
+    </phase>
+  </roadmap>
+
+  <feature_matrix>
+    <feature name="SEO &amp; Local Discovery">
+      <web>High (Indexed local pages, searchable via Google)</web>
+      <mobile>Low (App Store discovery only)</mobile>
+    </feature>
+    <feature name="Merchant Admin Dashboard">
+      <web>Optimized desktop layout for running ads &amp; analytics</web>
+      <mobile>Simplified interface for notification management</mobile>
+    </feature>
+    <feature name="Geofencing &amp; Real-time Alerts">
+      <web>Requires active browser window</web>
+      <mobile>Native background location &amp; instant OS push alerts</mobile>
+    </feature>
+    <feature name="Media Uploads">
+      <web>Standard web file selection</web>
+      <mobile>Direct camera hardware integration</mobile>
+    </feature>
+  </feature_matrix>
+</hyperlocal_app_strategy>

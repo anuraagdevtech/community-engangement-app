@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 110 14% 96%;
+    --foreground: 140 18% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 140 18% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 18% 11%;
+
+    --primary: 20 65% 45%;
+    --primary-foreground: 40 40% 98%;
+
+    --secondary: 170 42% 27%;
+    --secondary-foreground: 40 40% 98%;
+
+    --muted: 110 12% 91%;
+    --muted-foreground: 140 8% 38%;
+
+    --accent: 110 14% 90%;
+    --accent-foreground: 140 18% 14%;
+
+    --success: 142 45% 36%;
+    --success-foreground: 40 40% 98%;
+
+    --destructive: 4 72% 48%;
+    --destructive-foreground: 40 40% 98%;
+
+    --border: 110 10% 85%;
+    --input: 110 10% 85%;
+    --ring: 20 65% 45%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 140 14% 7%;
+    --foreground: 100 18% 92%;
+
+    --card: 140 12% 10%;
+    --card-foreground: 100 18% 92%;
+
+    --popover: 140 12% 10%;
+    --popover-foreground: 100 18% 92%;
+
+    --primary: 24 75% 58%;
+    --primary-foreground: 20 40% 10%;
+
+    --secondary: 168 38% 46%;
+    --secondary-foreground: 168 40% 8%;
+
+    --muted: 140 10% 15%;
+    --muted-foreground: 100 10% 65%;
+
+    --accent: 140 10% 16%;
+    --accent-foreground: 100 18% 92%;
+
+    --success: 142 45% 48%;
+    --success-foreground: 140 40% 8%;
+
+    --destructive: 4 65% 55%;
+    --destructive-foreground: 20 40% 10%;
+
+    --border: 140 10% 20%;
+    --input: 140 10% 20%;
+    --ring: 24 75% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+  }
+}
+
+@layer utilities {
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
