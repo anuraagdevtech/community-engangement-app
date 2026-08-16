@@ -104,7 +104,7 @@ export function ServicesView() {
         </TabsContent>
 
         <TabsContent value="connections" className="mt-4">
-          <FollowedBusinesses />
+          <FollowedBusinesses onDiscover={() => setTab("discover")} />
         </TabsContent>
       </Tabs>
     </div>

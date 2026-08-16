@@ -65,14 +65,14 @@ export default async function ProviderDetailPage({ params }: { params: { id: str
             <PhoneCall className="h-4 w-4" /> {provider.phone}
           </a>
         )}
-        {provider.website && (
+        {provider.website && /^https?:\/\//i.test(provider.website) && (
           <a
             href={provider.website}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 font-medium text-secondary hover:underline"
           >
-            <Globe className="h-4 w-4" /> {provider.website.replace(/^https?:\/\//, "")}
+            <Globe className="h-4 w-4" /> {provider.website.replace(/^https?:\/\//i, "")}
           </a>
         )}
         {provider.address && (

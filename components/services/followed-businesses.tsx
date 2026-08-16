@@ -47,7 +47,7 @@ function FollowedCard({ provider }: { provider: FollowedProvider }) {
   );
 }
 
-export function FollowedBusinesses() {
+export function FollowedBusinesses({ onDiscover }: { onDiscover?: () => void }) {
   const { center } = useActiveLocation();
   const { followed, loading } = useBusinessFollows(center);
 
@@ -69,8 +69,8 @@ export function FollowedBusinesses() {
         <p className="max-w-xs text-sm text-muted-foreground">
           Browse nearby businesses and click <strong>Connect</strong> to follow them here.
         </p>
-        <Button asChild variant="outline" size="sm">
-          <Link href="/services">Discover businesses</Link>
+        <Button variant="outline" size="sm" onClick={onDiscover}>
+          Discover businesses
         </Button>
       </div>
     );

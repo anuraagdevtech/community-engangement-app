@@ -59,17 +59,17 @@ export function useFollowStatus(providerId: string) {
     if (!user) return;
 
     if (isFollowing) {
-      await supabase
+      const { error } = await supabase
         .from("business_follows")
         .delete()
         .eq("follower_id", user.id)
         .eq("provider_id", providerId);
-      setIsFollowing(false);
+      if (!error) setIsFollowing(false);
     } else {
-      await supabase
+      const { error } = await supabase
         .from("business_follows")
         .insert({ follower_id: user.id, provider_id: providerId });
-      setIsFollowing(true);
+      if (!error) setIsFollowing(true);
     }
   }
 

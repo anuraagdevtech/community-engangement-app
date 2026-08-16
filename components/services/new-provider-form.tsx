@@ -42,6 +42,13 @@ export function NewProviderForm() {
       return;
     }
 
+    const sanitizedWebsite = website.trim();
+    if (sanitizedWebsite && !/^https?:\/\//i.test(sanitizedWebsite)) {
+      toast.error("Website must start with http:// or https://");
+      setSubmitting(false);
+      return;
+    }
+
     const { data, error } = await supabase
       .from("service_providers")
       .insert({
@@ -50,7 +57,7 @@ export function NewProviderForm() {
         category,
         description: description || null,
         phone: phone || null,
-        website: website || null,
+        website: sanitizedWebsite || null,
         address: address || null,
         location: toWKTPoint(location) as unknown as never,
       })
