@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import { formatDistanceToNow } from "date-fns";
-import { PhoneCall, ShieldCheck, Star, MapPin } from "lucide-react";
+import { Globe, PhoneCall, ShieldCheck, Star, MapPin } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { ReviewForm } from "@/components/services/review-form";
+import { FollowButton } from "@/components/services/follow-button";
 import { categoryMeta } from "@/lib/service-categories";
 
 const TIER_LABEL = ["Unverified", "Phone-verified", "Document-verified"];
@@ -53,6 +54,7 @@ export default async function ProviderDetailPage({ params }: { params: { id: str
             {provider.rating_count > 0 && <span className="text-muted-foreground">({provider.rating_count} reviews)</span>}
           </div>
         </div>
+        <FollowButton providerId={provider.id} />
       </div>
 
       {provider.description && <p className="text-sm leading-relaxed text-muted-foreground">{provider.description}</p>}
@@ -61,6 +63,16 @@ export default async function ProviderDetailPage({ params }: { params: { id: str
         {provider.phone && (
           <a href={`tel:${provider.phone}`} className="flex items-center gap-2 font-medium text-secondary hover:underline">
             <PhoneCall className="h-4 w-4" /> {provider.phone}
+          </a>
+        )}
+        {provider.website && (
+          <a
+            href={provider.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 font-medium text-secondary hover:underline"
+          >
+            <Globe className="h-4 w-4" /> {provider.website.replace(/^https?:\/\//, "")}
           </a>
         )}
         {provider.address && (
