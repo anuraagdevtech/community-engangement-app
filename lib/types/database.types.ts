@@ -8,7 +8,9 @@ export type ServiceCategory =
   | "health"
   | "education"
   | "community_faith"
-  | "government";
+  | "government"
+  | "retail"
+  | "food_beverage";
 
 export interface Database {
   public: {
@@ -63,6 +65,7 @@ export interface Database {
           category: ServiceCategory;
           description: string | null;
           phone: string | null;
+          website: string | null;
           address: string | null;
           location: unknown;
           verification_tier: number;
@@ -85,6 +88,15 @@ export interface Database {
         };
         Insert: Partial<Database["public"]["Tables"]["service_reviews"]["Row"]>;
         Update: Partial<Database["public"]["Tables"]["service_reviews"]["Row"]>;
+      };
+      business_follows: {
+        Row: {
+          follower_id: string;
+          provider_id: string;
+          created_at: string;
+        };
+        Insert: Partial<Database["public"]["Tables"]["business_follows"]["Row"]>;
+        Update: Partial<Database["public"]["Tables"]["business_follows"]["Row"]>;
       };
     };
     Views: Record<string, never>;
@@ -124,6 +136,7 @@ export interface Database {
           category: ServiceCategory;
           description: string | null;
           phone: string | null;
+          website: string | null;
           address: string | null;
           lat: number;
           lng: number;
@@ -143,6 +156,7 @@ export interface Database {
           category: ServiceCategory;
           description: string | null;
           phone: string | null;
+          website: string | null;
           address: string | null;
           lat: number;
           lng: number;
@@ -153,6 +167,25 @@ export interface Database {
           created_at: string;
         }[];
       };
+      followed_providers: {
+        Args: { lat: number; lng: number };
+        Returns: {
+          id: string;
+          name: string;
+          category: ServiceCategory;
+          description: string | null;
+          phone: string | null;
+          website: string | null;
+          address: string | null;
+          lat: number;
+          lng: number;
+          verification_tier: number;
+          image_url: string | null;
+          rating_avg: number;
+          rating_count: number;
+          distance_m: number;
+        }[];
+      };
     };
     Enums: Record<string, never>;
   };
@@ -160,4 +193,5 @@ export interface Database {
 
 export type NearbyPost = Database["public"]["Functions"]["nearby_posts"]["Returns"][number];
 export type NearbyProvider = Database["public"]["Functions"]["nearby_providers"]["Returns"][number];
+export type FollowedProvider = Database["public"]["Functions"]["followed_providers"]["Returns"][number];
 export type Profile = Database["public"]["Tables"]["profiles"]["Row"];

@@ -23,6 +23,7 @@ export function NewProviderForm() {
   const [category, setCategory] = React.useState<ServiceCategory>("home_services");
   const [description, setDescription] = React.useState("");
   const [phone, setPhone] = React.useState("");
+  const [website, setWebsite] = React.useState("");
   const [location, setLocation] = React.useState(activeCenter);
   const [address, setAddress] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
@@ -41,6 +42,13 @@ export function NewProviderForm() {
       return;
     }
 
+    const sanitizedWebsite = website.trim();
+    if (sanitizedWebsite && !/^https?:\/\//i.test(sanitizedWebsite)) {
+      toast.error("Website must start with http:// or https://");
+      setSubmitting(false);
+      return;
+    }
+
     const { data, error } = await supabase
       .from("service_providers")
       .insert({
@@ -49,6 +57,7 @@ export function NewProviderForm() {
         category,
         description: description || null,
         phone: phone || null,
+        website: sanitizedWebsite || null,
         address: address || null,
         location: toWKTPoint(location) as unknown as never,
       })
@@ -101,6 +110,11 @@ export function NewProviderForm() {
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="provider-phone">Phone (optional)</Label>
         <Input id="provider-phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+91 98765 43210" />
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor="provider-website">Website (optional)</Label>
+        <Input id="provider-website" type="url" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://example.com" />
       </div>
 
       <div>

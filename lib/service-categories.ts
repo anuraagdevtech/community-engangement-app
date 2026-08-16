@@ -1,4 +1,4 @@
-import { Wrench, HeartPulse, GraduationCap, Landmark, Building2, type LucideIcon } from "lucide-react";
+import { Wrench, HeartPulse, GraduationCap, Landmark, Building2, ShoppingBag, UtensilsCrossed, type LucideIcon } from "lucide-react";
 import type { ServiceCategory } from "@/lib/types/database.types";
 
 export interface CategoryMeta {
@@ -14,6 +14,8 @@ export const CATEGORIES: CategoryMeta[] = [
   { value: "education", label: "Education", icon: GraduationCap, color: "#2c6e63" },
   { value: "community_faith", label: "Community & Faith", icon: Landmark, color: "#b98a1f" },
   { value: "government", label: "Government & Civic", icon: Building2, color: "#5b6bc0" },
+  { value: "retail", label: "Retail & Shops", icon: ShoppingBag, color: "#7c3aed" },
+  { value: "food_beverage", label: "Food & Beverage", icon: UtensilsCrossed, color: "#d97706" },
 ];
 
 export function categoryMeta(value: ServiceCategory): CategoryMeta {
